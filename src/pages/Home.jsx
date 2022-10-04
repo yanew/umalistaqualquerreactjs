@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import { Item } from '../components/Item';
 import '../styles/home.css';
 
@@ -34,7 +34,7 @@ export function Home() {
         </button>
 
         {itens.map((item)=>(
-          <Item key= {item.id} conteudo= {item.conteudo}/>
+          <Item key= {item.id} id = {item.id} conteudo= {item.conteudo}/>
         ))
         }
 

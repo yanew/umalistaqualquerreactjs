@@ -1,20 +1,36 @@
-
-
+import React, { useState } from 'react';
+import '../styles/cadastro.css';
 
 
 export function Cadastro() {
 
+    const[contLogin, setContLogin] = useState("");
+    const[contSenha, setContSenha] = useState("");
+    const[contNome, setContNome] = useState("");
+
+    const criarUsuario = async () => {
+        const doc = {
+            login: contLogin,
+            senha: contSenha,
+            nome: contNome
+        }
+    
+        await fetch('http://localhost:8080/usuario',{
+            method: 'POST',
+            body: JSON.stringify(doc),
+            headers: {'Content-Type': 'application/json'}
+        });
+    }
 
     return(
-    <form id="formCadastro" class="container">
-        <div id="cadastro">
-            <h1 class="h1">Cadastre-se</h1>
-            <input type="text" name="login" id="login" placeholder="Login" class="input"/>
-            <input type="password" name="senha" id="senha" placeholder="Senha" class="input"/>
-            <input type="nome" name="nome" id="nome" placeholder="Nome" class="input"/>
-            <input type="submit" value="Cadastrar" onClick={cadastrar} class="button"/>
+        <div id="cadastro" className="container">
+            <h1 className="h1">Cadastre-se</h1>
+            <input type="text" name="login" id="login" placeholder="Login" className="input" onChange={(e) => setContLogin(e.target.value)}/>
+            <input type="password" name="senha" id="senha" placeholder="Senha" className="input" onChange={(e) => setContSenha(e.target.value)}/>
+            <input type="text" name="nome" id="nome" placeholder="Nome" className="input" onChange={(e) => setContNome(e.target.value)}/>
+            <button  className="button" onClick={criarUsuario}> Cadastrar </button>
         </div>
-    </form>
+    
     )
 
 }

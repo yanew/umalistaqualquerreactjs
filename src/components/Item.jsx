@@ -16,7 +16,7 @@ export function Item(item) {
     }
 
     return(
-        <div class="item">
+        <div class="item" id= {item.id}>
             <div class="painelTextoItem">
                 <span class="textoItem">{item.conteudo}</span>
             </div>
