@@ -11,26 +11,6 @@ export function Login() {
     const conferirUsuario = async () => {
         const res = await fetch(uri);
         const usuarios = await res.json();
-    
-        let usu = {
-            id:"",
-            login: "",
-            senha: "",
-            nome: ""
-        };
-
-        usuarios.content.forEach(usuario =>{
-            if((usuario.login==form.login.value)&&(usuario.senha==form.senha.value)){
-                usu = {
-                    id: usuario.id,
-                    login: usuario.login,
-                    senha: usuario.senha,
-                    nome: usuario.nome
-                }
-            }
-        });
-    
-        alert('3');
 
         if(form.login.value===usu.login&&form.senha.value===usu.senha){
             guardarIdUsuarioSessionStorage(usu.id);
