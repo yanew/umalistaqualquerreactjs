@@ -1,6 +1,6 @@
-import { Home } from './pages/Home';
-import { Cadastro } from './pages/Cadastro';
-import { Login } from './pages/Login';
+import { Home } from './Home';
+import { Cadastro } from './Cadastro';
+import { Login } from './Login';
 import { Route, Routes, Router } from 'react-router-dom';
 
 export function AppRouter() {
@@ -9,7 +9,7 @@ export function AppRouter() {
         <Router>
             <Routes>
                 <Route exact path="/">
-                    <Login />
+                    <Home />
                 </Route>
                 <Route path="/cadastro">
                     <Cadastro />

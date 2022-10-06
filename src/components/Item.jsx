@@ -5,26 +5,22 @@ import '../styles/item.css';
 
 export function Item(item) {
 
-    //onClick={removerItem()}
-    const removerItem = (event) => {
-
-    }
-
-    //onClick={selecionarItemParaEdicao(window.event)}
-    const selecionarItemParaEdicao = (event) => {
-
+    const deleteItem = async () => {
+        await fetch('http://localhost:8080/item/' + item.id,{
+            method: 'DELETE'
+        });
     }
 
     return(
-        <div class="item" id= {item.id}>
-            <div class="painelTextoItem">
-                <span class="textoItem">{item.conteudo}</span>
+        <div className="item" id= {item.id}>
+            <div className="painelTextoItem">
+                <span >{item.conteudo}</span>
             </div>
-            <div class="painelBotoes">
-                <a class="link" >
+            <div className="painelBotoes">
+                <a className="link" onClick={() => item.selecionarItem(item)}>
                     <img src={edit} width="20" height="20"/>
                 </a>
-                <a class="link" >
+                <a className="link" onClick={deleteItem}>
                     <img src={lixeira} width="20" height="20"/>
                 </a>
             </div>
