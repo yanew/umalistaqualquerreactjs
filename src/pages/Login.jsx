@@ -6,21 +6,14 @@ export function Login() {
     const[contLogin, setContLogin] = useState("");
     const[contSenha, setContSenha] = useState("");
 
-    const uri = "http://localhost:8080/usuario";
+    const uri = "http://localhost:8080/usuario/";
 
     const conferirUsuario = async () => {
-        const res = await fetch(uri);
-        const usuarios = await res.json();
-
-        if(form.login.value===usu.login&&form.senha.value===usu.senha){
-            guardarIdUsuarioSessionStorage(usu.id);
-            location.href = "http://127.0.0.1:5500/index.html";
-        }else{
-            alert('tente de novo');
-        }
-    
-        alert('4');
-        return valido;
+        const res = await fetch(uri+contLogin+"/"+contSenha);
+        alert(res);
+        const usuario = await res.json();
+        console.log(usuario);
+        guardarIdUsuarioSessionStorage(usuario.id);
     }
     
     const guardarIdUsuarioSessionStorage = (idUsuario) => {
@@ -28,7 +21,6 @@ export function Login() {
     }
     
     const logar = async () =>{
-        alert('logar');
        await conferirUsuario();
     }
 
