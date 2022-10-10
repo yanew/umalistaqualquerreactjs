@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import '../styles/login.css';
 
 export function Login() {
@@ -10,7 +11,6 @@ export function Login() {
 
     const conferirUsuario = async () => {
         const res = await fetch(uri+contLogin+"/"+contSenha);
-        alert(res);
         const usuario = await res.json();
         console.log(usuario);
         guardarIdUsuarioSessionStorage(usuario.id);
@@ -25,13 +25,15 @@ export function Login() {
     }
 
     return(
-        <div id="panelLogin" className="container">
-            <h1 className="h1">Login</h1>
-            <input type="text" name="login" id="login" placeholder="Login" className="input" onChange={(e) => setContLogin(e.target.value)}/>
-            <input type="password" name="senha" id="senha" placeholder="Senha" className="input" onChange={(e) => setContSenha(e.target.value)}/>
-            <button onClick={logar} className="button"> Entrar </button>
-        </div>
-    
+            <div id="panelLogin" className="container">
+                <h1 className="h1">Login</h1>
+                <input type="text" name="login" id="login" placeholder="Login" className="input" onChange={(e) => setContLogin(e.target.value)}/>
+                <input type="password" name="senha" id="senha" placeholder="Senha" className="input" onChange={(e) => setContSenha(e.target.value)}/>
+                <Link to="/home">
+                    <button onClick={logar} className="button"> Entrar </button>
+                </Link>    
+                 <Link to="/cadastro">Não está cadastrado? Cadastre-se aqui!</Link>
+            </div>
     )
 
 }

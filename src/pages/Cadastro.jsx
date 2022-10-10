@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import '../styles/cadastro.css';
 
 
@@ -28,7 +29,9 @@ export function Cadastro() {
             <input type="text" name="login" id="login" placeholder="Login" className="input" onChange={(e) => setContLogin(e.target.value)}/>
             <input type="password" name="senha" id="senha" placeholder="Senha" className="input" onChange={(e) => setContSenha(e.target.value)}/>
             <input type="text" name="nome" id="nome" placeholder="Nome" className="input" onChange={(e) => setContNome(e.target.value)}/>
-            <button  className="button" onClick={criarUsuario}> Cadastrar </button>
+            <Link to="/">
+                <button  className="button" onClick={criarUsuario}> Cadastrar </button>
+            </Link>
         </div>
     
     )

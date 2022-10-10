@@ -16,7 +16,6 @@
   .container header img {
     width: 60px;
     height: 60px;
-    border-radius: 30px;
     margin-left: 7px;
   }
 
@@ -68,4 +67,28 @@
     border-radius: 5px;
   
     font-size: 16px;
+  }
+
+  .botaoRedondo{
+    width: 50%;
+    padding: 24px;
+  
+    font-weight: 700;
+  
+    background: #ea4c89;
+    color: #fff;
+  
+    border-radius: 50px;
+    margin: 12px 0 20px;
+    border: none;
+  
+    cursor: pointer;
+    transition: filter 0.2s;
+  
+    font-size: 16px;
+  }
+
+  .containerBotoes{
+    display: flex;
+    align-items: center;
   }

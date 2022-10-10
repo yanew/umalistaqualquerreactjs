@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { Item } from '../components/Item';
 import '../styles/home.css';
+import logout from '../images/logout.png';
 
 export function Home() {
   
@@ -12,7 +14,7 @@ export function Home() {
 
   const atualizarUsuario = async () =>{
 
-    const uri = 'http://localhost:8080/usuario/4ea7f047-7f36-40c0-ac50-7f67b872fa09';   
+    const uri = 'http://localhost:8080/usuario/'+ sessionStorage.idUsu;   
     const res = await fetch(uri);
     const usuario = await res.json();
 
@@ -33,7 +35,7 @@ export function Home() {
 
   const selecionarItem = async (it)=>{
 
-    const uri = 'http://localhost:8080/usuario/4ea7f047-7f36-40c0-ac50-7f67b872fa09';   
+    const uri = 'http://localhost:8080/usuario/'+ sessionStorage.idUsu;   
     const res = await fetch(uri);
     const usuario = await res.json();
 
@@ -62,7 +64,7 @@ export function Home() {
   useEffect(() => {
     const inicializar = async ()=>{
 
-      const uri = 'http://localhost:8080/usuario/4ea7f047-7f36-40c0-ac50-7f67b872fa09';   
+      const uri = 'http://localhost:8080/usuario/'+ sessionStorage.idUsu;   
       const res = await fetch(uri);
       const usuario = await res.json();
   
@@ -76,6 +78,9 @@ export function Home() {
     <div id='container' className="container">
        <header>
           <h1>Uma lista qualquer</h1>
+          <Link to="/">
+            <img src={logout} width="20" height="20" alt='Sair'/>
+          </Link>
         </header>
 
         <input id="inputItem"
@@ -86,15 +91,15 @@ export function Home() {
           onChange={(e) => setConteudoItem(e.target.value)}
         />
 
-       {adicionar && <button id="botaoAdicionarItem" type="button" onClick={atualizarUsuario}>
-          Adicionar
-        </button> 
-        }
+        {adicionar && <button id="botaoAdicionarItem" type="button" onClick={atualizarUsuario}>
+            Adicionar
+          </button> 
+          }
 
-        {!adicionar && <button id="botaoAtualizarItem" type="button" onClick={atualizarItem}>
-          Atualizar
-        </button> 
-        }
+          {!adicionar && <button id="botaoAtualizarItem" type="button" onClick={atualizarItem}>
+            Atualizar
+          </button> 
+          }
 
         <div id="cartaoItem" className="cartaoItem">
           {itens.map((item)=>(
